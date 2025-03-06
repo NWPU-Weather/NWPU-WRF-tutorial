@@ -366,6 +366,25 @@ ls -ll *.exe
 以上便是本次教程的全部内容！
 
 
+#### 附录：安装过程中对于可能出现的问题及解决方法
+
+**※ 在wrf编译（./compile）后，只出现successfully，但没有输出ndown.exe、real.exe、tc.exe、wrf.exe这四个exe文件。**
+
+问题原因可能是在NetCDF、mpich、zlib、libpng、jasper这五个外部库的安装上，这五个外部库的安装不能直接通过sudo apt-get install * 来进行安装，必须在下载相应安装包和解压后，通过make和make install这两条命令进行编译。
+
+**※ 在真实案例里对气象数据运行./ungrib.exe这条命令时出现：**
+```
+./ungrib.exe: error while loading shared libraries: libpng12.so.0: cannot open shared object file: No such file or directory
+```
+**报错原因**：libpng12在Ubuntu20.04存储库中不再可用，因此，一些没有使用新的libpng (libpng16)库构建的应用程序无法安装或正常使用。
+
+**解决方法**：在命令窗口输入如下命令：
+
+```
+sudo add-apt-repository ppa:linuxuprising/libpng12
+sudo apt update
+sudo apt install libpng12-0
+```
 
 
 
