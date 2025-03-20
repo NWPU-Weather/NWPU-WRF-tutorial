@@ -214,6 +214,7 @@ cd ~/Build_WRF/WRF/WRF/test/em_real/
  /
 ```
 注意，time_control里的起止时间要与namelist.wps里设置的一样，也就是模拟的气象数据的起止时间。
+
 将WPS预处理生成的最终文件链接到当前目录：
 ```
 ln -sf ~/Build_WRF/WRF/WPS-4.6.0/met_em*  .
